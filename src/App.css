@@ -1,0 +1,100 @@
+h1, h2, h3, h4, p {
+  cursor: default;
+}
+
+h1 {
+  font-family: 'Press Start 2P', cursive;
+}
+
+body {
+  min-width: 1024px;
+}
+
+.card {
+  border: 1px solid #DDD;
+  border-radius: 3px;
+}
+
+.cursor {
+  cursor: default;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.majorSelectContainer {
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+.majorSelect {
+  width: 22%;
+  height: 575px;
+  margin: 16px 8px;
+}
+
+.majorTitle {
+  margin-bottom: 0;
+}
+
+.majorSubtitle {
+  margin-top: .5rem;
+}
+
+.majorSuggestion {
+  display: flex;
+  justify-content: space-evenly;
+  width: 20%;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+}
+
+.move {
+  margin: 1rem 1rem 0rem 3rem;
+}
+
+.moveSet {
+  text-align: left;
+}
+
+.selectionContainer {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.selectMajor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  
+}
+
+.selectMajorButton {
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  width: 3rem;
+  height: 3rem;
+  position: absolute;
+  cursor: pointer;
+  background: none;
+}
+
+.selectMajorLeft {
+  left: 0;
+}
+
+.selectMajorRight {
+  right: 0;
+}
+
+.tip {
+  max-width: 10rem;
+}
