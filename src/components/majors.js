@@ -4,6 +4,10 @@ export const MAJORS = [
         majorName: "Business",
         majorType: "Damage",
         idleSpritePath: require("../Assets/business-idle.png"),
+        hp: 20,
+        attack: 5,
+        defense: 3,
+        speed: 5,
         move1: {
             moveName: "Trade Deal",
             moveTip: "Take d4 health from an enemy and heal yourself for that amount."

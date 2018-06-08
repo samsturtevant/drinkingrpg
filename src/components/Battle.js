@@ -11,6 +11,12 @@ export default class Battle extends React.Component {
         super(props);
         this.state = {
             turn: 0,
+            players: [
+                MAJORS[this.props.players[0]], 
+                MAJORS[this.props.players[1]], 
+                MAJORS[this.props.players[2]], 
+                MAJORS[this.props.players[3]]
+            ],
             order: [
                 MAJORS[this.props.players[0]],
                 MAJORS[this.props.players[1]],
@@ -18,15 +24,19 @@ export default class Battle extends React.Component {
                 MAJORS[this.props.players[3]],
                 this.props.enemies
             ],
+            currentUnit: MAJORS[this.props.players[0]],
             enemies: this.props.enemies,
             showMoves: false,
             showTargets: false
         };
         this.chooseTarget = this.chooseTarget.bind(this)
+        this.showMoves = this.showMoves.bind(this)
     }
 
     componentDidMount() {
-        this.startTurn(this.state.order[this.state.turn]);
+        this.setState({currentUnit: this.state.order[this.state.turn]}, function() {
+            this.startTurn(this.state.currentUnit);
+        })
     }
 
     startTurn(currentUnit) {
@@ -35,10 +45,13 @@ export default class Battle extends React.Component {
         }
     }
 
-    showMoves() {
+    showMoves(currentUnit) {
         this.setState({
             showMoves: true,
-            currentMoves: MOVES[this.state.order[this.state.turn].majorIndex]
+            currentMoves: MOVES[currentUnit.majorIndex],
+            currentUnit: currentUnit
+        }, () => { 
+            //
         });
     }
 
@@ -54,19 +67,27 @@ export default class Battle extends React.Component {
 
     chooseTarget(target) {
         if (this.state.moveUsed === 0) {
+            this.setState({showTargets: false, showMoves: false})
             this.distributeResults(this.state.currentMoves.move1(), target);
         }
     }
 
     distributeResults(results, target) {
         let roll = results.roll;
-        this.setState({showTargets: "no"})
         if (results.singleDamage) {
             let e = this.state.enemies;
-            e[target].hp = e[target].hp - roll * results.singleDamage
-            console.log(e)
+            e[target].hp = e[target].hp - roll * results.singleDamage - this.state.players[this.state.turn].attack
             this.setState({enemies: e})
         }
+        if (results.selfHealing) {
+            let p = this.state.players[this.state.turn];
+            p.hp = p.hp + roll * results.selfHealing
+        }
+        this.setState({turn: this.state.turn++, currentUnit: this.state.order[this.state.turn]})
+        // if (this.state.turn > this.state.order.length + 1) {
+        //     this.setState({turn: 0})
+        // }
+        this.startTurn(this.state.order[this.state.turn]);
     }
 
     render() {
@@ -74,12 +95,12 @@ export default class Battle extends React.Component {
             <div>
                 <div className="battle">
                     <div className="partyBattle">
-                        <div className="playerBattle">
+                        <div className="playerBattle" style={{marginLeft: "14rem"}}>
                             <div className="stats">
-                                <h4>HP: 20</h4>
-                                <h4>ATK: 5</h4>
-                                <h4>DEF: 3</h4>
-                                <h4>SPD: 6</h4>
+                                <h4>HP: {this.state.players[0].hp}</h4>
+                                <h4>ATK: {this.state.players[0].attack}</h4>
+                                <h4>DEF: {this.state.players[0].defense}</h4>
+                                <h4>SPD: {this.state.players[0].speed}</h4>
                             </div>
                             <AnimatedSpriteSheet
                                 filename={MAJORS[this.props.players[0]].idleSpritePath}
@@ -89,7 +110,7 @@ export default class Battle extends React.Component {
                                 speed={200}
                             />
                         </div>
-                        <div className="playerBattle">
+                        <div className="playerBattle" style={{marginLeft: "10rem"}}>
                             <div className="stats">
                                 <h4>HP: 20</h4>
                                 <h4>ATK: 5</h4>
@@ -104,7 +125,7 @@ export default class Battle extends React.Component {
                                 speed={200}
                             />
                         </div>
-                        <div className="playerBattle">
+                        <div className="playerBattle" style={{marginLeft: "6rem"}}>
                             <div className="stats">
                                 <h4>HP: 20</h4>
                                 <h4>ATK: 5</h4>
@@ -142,19 +163,19 @@ export default class Battle extends React.Component {
                     onClick={() => this.state.showTargets === "enemy" ? this.chooseTarget(0) : false }>
                     <div className="stats">
                                 <h4>HP: {this.props.enemies[0].hp}</h4>
-                                <h4>ATK: 5</h4>
-                                <h4>DEF: 3</h4>
-                                <h4>SPD: 6</h4>
+                                <h4>ATK: {this.props.enemies[0].attack}</h4>
+                                <h4>DEF: {this.props.enemies[0].defense}</h4>
+                                <h4>SPD: {this.props.enemies[0].speed}</h4>
                             </div>
                     </button>
                 </div>
                 <div className="battleHUD">
                     {this.state.showMoves ? 
                     <div className="flex">
-                        <button onClick={this.target.bind(this, 0)}>{this.state.order[this.state.turn].move1.moveName}</button>
-                        <button onClick={this.target.bind(this, 1)}>{this.state.order[this.state.turn].move2.moveName}</button>
-                        <button onClick={this.target.bind(this, 2)}>{this.state.order[this.state.turn].move3.moveName}</button>
-                        <button onClick={this.target.bind(this, 3)}>{this.state.order[this.state.turn].move4.moveName}</button>
+                        {this.state.currentUnit && this.state.showMoves ? <button onClick={this.target.bind(this, 0)}>{this.state.currentUnit.move1.moveName}</button> : null}
+                        {this.state.currentUnit && this.state.showMoves ? <button onClick={this.target.bind(this, 1)}>{this.state.currentUnit.move2.moveName}</button> : null}
+                        {this.state.currentUnit && this.state.showMoves ? <button onClick={this.target.bind(this, 2)}>{this.state.currentUnit.move3.moveName}</button> : null}
+                        {this.state.currentUnit && this.state.showMoves ? <button onClick={this.target.bind(this, 3)}>{this.state.currentUnit.move4.moveName}</button> : null}
                     </div>
                     : null}
                 </div>
