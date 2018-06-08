@@ -3,12 +3,15 @@ import ReactTooltip from 'react-tooltip';
 import MajorSelectCard from './MajorSelectCard';
 import '../App.css';
 
+import { MAJORS } from './majors.js';
+
 export default class MajorSelect extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            
         };
+        this.onGameStart = this.onGameStart.bind(this)
     }
 
     onMajor1Change(val) {
@@ -79,11 +82,17 @@ export default class MajorSelect extends React.Component {
         }
     }
 
+    onGameStart() {
+        var players = [this.state.major1, this.state.major2, this.state.major3, this.state.major4]
+        this.props.onGameStart(players);
+    }
+
     render() {
         return (
             <div className="selectionContainer">
+                <button className="selectDone" onClick={this.onGameStart}>✔︎</button>
                 <h1>Choose your party!</h1>
-                <p>Party composition is up to you, but we suggest one major for each role (damage, tank, utility, restoration).</p>
+                <p style={{color: "white"}}>Party composition is up to you, but we suggest one major for each role (damage, tank, utility, restoration).</p>
                 <div className="majorSuggestion">
                     <div data-tip="Damage majors use heavy-hitting attacks to damage enemies.">{this.checkDamage()}</div>
                     <div data-tip="Tank majors use defensive moves to protect themselves and allies.">{this.checkTank()}</div>

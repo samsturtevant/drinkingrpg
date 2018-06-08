@@ -1,22 +1,41 @@
+#root {
+  align-items: center;
+}
+
 h1, h2, h3, h4, p {
   cursor: default;
+  color: white;
 }
 
 h1 {
   font-family: 'Press Start 2P', cursive;
+  color: white;
 }
 
 body {
   min-width: 1024px;
+  background-color: #222;
+}
+
+.battle {
+  display: flex;
+  justify-content: space-between;
 }
 
 .card {
   border: 1px solid #DDD;
-  border-radius: 3px;
+  border-radius: 5px;
+  background-color: #FFF;
 }
 
 .cursor {
   cursor: default;
+}
+
+.enemyBattle {
+  background-color: #FFF;
+  width: 50px;
+  height: 50px;
 }
 
 .flex {
@@ -34,15 +53,17 @@ body {
 .majorSelect {
   width: 22%;
   height: 575px;
-  margin: 16px 8px;
+  margin: 16px 16px;
 }
 
 .majorTitle {
   margin-bottom: 0;
+  color: black;
 }
 
 .majorSubtitle {
   margin-top: .5rem;
+  color: black;
 }
 
 .majorSuggestion {
@@ -56,10 +77,64 @@ body {
 
 .move {
   margin: 1rem 1rem 0rem 3rem;
+  color: black;
 }
 
 .moveSet {
   text-align: left;
+}
+
+.party {
+  display: flex;
+}
+
+.partyBattle div {
+  background-size: 4200%;
+}
+
+.party div {
+  background-size: 4200%;
+}
+
+.partyContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.partyStatus {
+  font-family: 'Press Start 2P', cursive;
+}
+
+.playerBattle {
+  display: flex;
+  margin-left: 2rem;
+  align-items: center;
+}
+
+.selectDone {
+  border: #4CAF50;
+  border-radius: 5px;
+  outline: none;
+  position: absolute;
+  right: 2.5%;
+  width: 6rem;
+  height: 4rem;
+  background-color: #4CAF50;
+  color: #FFF;
+  font-size: 2rem;
+  cursor: pointer;
+  box-shadow: 0 9px #3e8e41;
+}
+
+.selectDone:hover {
+  background-color: #3DBF61
+}
+
+.selectDone:active {
+  background-color: #3DBF61;
+  box-shadow: 0 5px #3e8e41;
+  transform: translateY(4px);
 }
 
 .selectionContainer {
@@ -85,6 +160,15 @@ body {
   position: absolute;
   cursor: pointer;
   background: none;
+  color: #999
+}
+
+.selectMajorButton:hover {
+  color: #000
+}
+
+.selectMajorButton:active {
+  color: #999
 }
 
 .selectMajorLeft {
@@ -93,6 +177,10 @@ body {
 
 .selectMajorRight {
   right: 0;
+}
+
+.stats h4 {
+  margin: 0;
 }
 
 .tip {
