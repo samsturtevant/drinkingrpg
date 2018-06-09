@@ -1,5 +1,7 @@
 #root {
   align-items: center;
+  max-width: 1280px;
+  margin: auto;
 }
 
 h1, h2, h3, h4, p {
@@ -17,9 +19,27 @@ body {
   background-color: #222;
 }
 
+.activeTarget {
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid #FFF;
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+}
+
+.inactiveTarget {
+  background-color: transparent;
+  border: none;
+  border-bottom: 3px solid rgba(0,0,0,0);
+  border-radius: 5px;
+  outline: none;
+}
+
 .battle {
   display: flex;
   justify-content: space-between;
+  margin-top: 1rem;
 }
 
 .card {
@@ -52,8 +72,11 @@ body {
 
 .majorSelect {
   width: 22%;
-  height: 575px;
   margin: 16px 16px;
+}
+
+.majorSelect .flex div {
+  background-size: 4200%;
 }
 
 .majorTitle {
@@ -82,10 +105,15 @@ body {
 
 .moveSet {
   text-align: left;
+  margin-bottom: 2rem;
 }
 
 .party {
   display: flex;
+}
+
+.partyBattle {
+  justify-content: space-around;
 }
 
 .partyBattle div {
@@ -109,7 +137,7 @@ body {
 .playerBattle {
   display: flex;
   margin-left: 2rem;
-  align-items: center;
+  align-items: flex-start;
 }
 
 .selectDone {
@@ -117,7 +145,7 @@ body {
   border-radius: 5px;
   outline: none;
   position: absolute;
-  right: 2.5%;
+  right: 2rem;
   width: 6rem;
   height: 4rem;
   background-color: #4CAF50;
@@ -177,6 +205,35 @@ body {
 
 .selectMajorRight {
   right: 0;
+}
+
+.stat {
+  margin: 0;
+  color: black;
+}
+
+.status {
+  width: 5rem;
+  margin-right: 1rem;
+}
+
+.status h4 {
+  margin: 0;
+}
+
+.statRight {
+  position: absolute;
+  left: 40%;
+}
+
+.statRow {
+  display: flex;
+  margin: 1rem 0 0 3rem;
+  position: relative;
+}
+
+.stats {
+  width: 5rem;
 }
 
 .stats h4 {

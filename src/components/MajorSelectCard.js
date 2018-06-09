@@ -9,7 +9,7 @@ export default class MajorSelectCard extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            currentMajor: Math.round(Math.random() * 15)
+            currentMajor: 0 // Math.round(Math.random() * 15)
         };
     }
 
@@ -55,10 +55,18 @@ export default class MajorSelectCard extends React.Component {
                     <AnimatedSpriteSheet
                         filename={MAJORS[this.state.currentMajor].idleSpritePath}
                         initialFrame={0}
-                        frame={{width: 240, height: 320}}
-                        bounds={{x: 0, y: 0, width: 10080, height: 320}}
+                        frame={{width: 120, height: 160}}
+                        bounds={{x: 0, y: 0, width: 5040, height: 160}}
                         speed={200}
                     />
+                </div>
+                <div className="statRow">
+                    <h4 className="cursor stat" data-tip="Health determines the amount of damage you can take before fainting.">HP: {MAJORS[this.state.currentMajor].hp}</h4>
+                    <h4 className="cursor stat statRight" data-tip="Attack determines how much additional damage you deal.">ATK: {MAJORS[this.state.currentMajor].attack}</h4>
+                </div>
+                <div className="statRow">
+                    <h4 className="cursor stat" data-tip="Defense determines the amount of damage you mitigate.">DEF: {MAJORS[this.state.currentMajor].defense}</h4>
+                    <h4 className="cursor stat statRight" data-tip="Speed determines what order you attack in.">SPD: {MAJORS[this.state.currentMajor].speed}</h4>
                 </div>
                 <div className="moveSet">
                     <h4 className="cursor move" data-tip={MAJORS[this.state.currentMajor].move1.moveTip}>{MAJORS[this.state.currentMajor].move1.moveName}</h4>

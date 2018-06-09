@@ -9,7 +9,7 @@ export default class MajorSelect extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            
+
         };
         this.onGameStart = this.onGameStart.bind(this)
     }

@@ -4,10 +4,11 @@ export const MAJORS = [
         majorName: "Business",
         majorType: "Damage",
         idleSpritePath: require("../Assets/business-idle.png"),
-        hp: 20,
-        attack: 5,
-        defense: 3,
-        speed: 5,
+        hp: 40,
+        attack: 7,
+        defense: 4,
+        speed: 4,
+        block: 0,
         move1: {
             moveName: "Trade Deal",
             moveTip: "Take d4 health from an enemy and heal yourself for that amount."
@@ -30,13 +31,18 @@ export const MAJORS = [
         majorName: "Electrical Eng.",
         majorType: "Damage",
         idleSpritePath: require("../Assets/ee-idle.png"),
+        hp: 40,
+        attack: 5,
+        defense: 3,
+        speed: 7,
+        block: 0,
         move1: {
             moveName: "Spark",
             moveTip: "Zap an enemy for d6 damage."
         },
         move2: {
             moveName: "Charge",
-            moveTip: "Roll a d4 to give your next electric attack a chance to stun (1 = 25%, 2 = 50%, 3 = 75%, 4 = 100%)."
+            moveTip: "Roll a d4, giving your next electric attack a 25% chance to stun its target(s)."
         },
         move3: {
             moveName: "Circuit",
@@ -44,7 +50,7 @@ export const MAJORS = [
         },
         move4: {
             moveName: "Magnetic Field",
-            moveTip: "Roll a d20 to create a personal shield that blocks all damage for the next turn. Critical success creates a shield for the entire party."
+            moveTip: "Create a personal shield that blocks d20 damage. Critical success creates a shield for the entire party."
         }
     },
     {
@@ -52,6 +58,11 @@ export const MAJORS = [
         majorName: "Comp-Sci",
         majorType: "Damage",
         idleSpritePath: require("../Assets/cs-idle.png"),
+        hp: 40,
+        attack: 5,
+        defense: 2,
+        speed: 6,
+        block: 0,
         move1: {
             moveName: "Cord Whip",
             moveTip: "Hit the enemy with a power cord for d8 damage."
@@ -74,6 +85,11 @@ export const MAJORS = [
         majorName: "Philosophy",
         majorType: "Damage",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 40,
+        attack: 7,
+        defense: 5,
+        speed: 4,
+        block: 0,
         move1: {
             moveName: "Ad Hominem",
             moveTip: "Roll a d6 and deal that much damage to an enemy."
@@ -96,6 +112,11 @@ export const MAJORS = [
         majorName: "Geology",
         majorType: "Tank",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 50,
+        attack: 5,
+        defense: 7,
+        speed: 3,
+        block: 0,
         move1: {
             moveName: "Rock Throw",
             moveTip: "Throw a rock, dealing d4 damage to an enemy. If the battlefield has been surveyed, apply a debuff based on the results."
@@ -118,6 +139,11 @@ export const MAJORS = [
         majorName: "Civil Eng.",
         majorType: "Tank",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 50,
+        attack: 3,
+        defense: 7,
+        speed: 3,
+        block: 0,
         move1: {
             moveName: "Safety Violation",
             moveTip: "Damage an enemy for d4, with a chance to stun them (1 = 25%, 2 = 50%, etc.)."
@@ -140,6 +166,11 @@ export const MAJORS = [
         majorName: "Law",
         majorType: "Tank",
         idleSpritePath: require("../Assets/law-idle.png"),
+        hp: 50,
+        attack: 5,
+        defense: 5,
+        speed: 2,
+        block: 0,
         move1: {
             moveName: "Prosecute",
             moveTip: "Use evidence to inflict d6 damage to an enemy."
@@ -162,6 +193,11 @@ export const MAJORS = [
         majorName: "Theater",
         majorType: "Tank",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 50,
+        attack: 2,
+        defense: 5,
+        speed: 5,
+        block: 0,
         move1: {
             moveName: "Break a Leg",
             moveTip: "Attack an enemy, dealing d4 damage and lowering their speed by the same amount."
@@ -184,6 +220,11 @@ export const MAJORS = [
         majorName: "Music",
         majorType: "Utility",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 40,
+        attack: 4,
+        defense: 2,
+        speed: 6,
+        block: 0,
         move1: {
             moveName: "Power Chord",
             moveTip: "Deal d6 damage to an enemy."
@@ -206,6 +247,11 @@ export const MAJORS = [
         majorName: "Photography",
         majorType: "Utility",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 40,
+        attack: 4,
+        defense: 3,
+        speed: 3,
+        block: 0,
         move1: {
             moveName: "Tripod",
             moveTip: "Extend your tripod into a weapon, striking an enemy for d4 damage."
@@ -228,6 +274,11 @@ export const MAJORS = [
         majorName: "Chemistry",
         majorType: "Utility",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 40,
+        attack: 3,
+        defense: 4,
+        speed: 3,
+        block: 0,
         move1: {
             moveName: "Acidic Solution",
             moveTip: "Douse an enemy in an acidic solution, inflicting d6 damage."
@@ -250,6 +301,11 @@ export const MAJORS = [
         majorName: "Design",
         majorType: "Utility",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 40,
+        attack: 4,
+        defense: 3,
+        speed: 4,
+        block: 0,
         move1: {
             moveName: "Prototype",
             moveTip: "Damage an enemy with a prototype weapon for d6 damage."
@@ -272,6 +328,11 @@ export const MAJORS = [
         majorName: "Pre-Med",
         majorType: "Restoration",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 30,
+        attack: 2,
+        defense: 6,
+        speed: 3,
+        block: 0,
         move1: {
             moveName: "Incision",
             moveTip: "Slice an enemy for d4 health and an additional turn of bleed damage."
@@ -294,6 +355,11 @@ export const MAJORS = [
         majorName: "Religion",
         majorType: "Restoration",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 30,
+        attack: 6,
+        defense: 3,
+        speed: 1,
+        block: 0,
         move1: {
             moveName: "Thump",
             moveTip: "Whack an enemy with a sacred text, dealing d4 damage."
@@ -316,6 +382,11 @@ export const MAJORS = [
         majorName: "Psychology",
         majorType: "Restoration",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 30,
+        attack: 4,
+        defense: 4,
+        speed: 4,
+        block: 0,
         move1: {
             moveName: "Pavlov's Dog",
             moveTip: "Ring a bell and inflict d4 damage to an enemy."
@@ -338,6 +409,11 @@ export const MAJORS = [
         majorName: "Ecology",
         majorType: "Restoration",
         idleSpritePath: require("../Assets/ce-idle.png"),
+        hp: 30,
+        attack: 4,
+        defense: 5,
+        speed: 3,
+        block: 0,
         move1: {
             moveName: "Whack",
             moveTip: "Strike an enemy with a stick, dealing d4 damage."
