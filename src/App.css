@@ -19,6 +19,10 @@ body {
   background-color: #222;
 }
 
+.activeMove {
+  box-shadow: 0px 3px gray;
+}
+
 .activeTarget {
   background-color: transparent;
   border: none;
@@ -50,6 +54,17 @@ body {
 
 .cursor {
   cursor: default;
+}
+
+.dice {
+  width: 3rem;
+  height: 3rem;
+  font-family: "Press Start 2P", cursive;
+  line-height: 3rem;
+  background-color: #FFF;
+  color: #000;
+  border-radius: 3px;
+  margin: auto;
 }
 
 .enemyBattle {
@@ -103,6 +118,30 @@ body {
   color: black;
 }
 
+.moveButton {
+  height: 40px;
+  width: 120px;
+  margin: .25rem;
+  color: #000;
+  background-color: #FFF;
+  border: none;
+  border-radius: 3px;
+}
+
+.moveButton:focus {
+  outline: blue solid;
+}
+
+.moveButtonContainer {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
+.moveRow {
+  display: flex;
+}
+
 .moveSet {
   text-align: left;
   margin-bottom: 2rem;
@@ -136,8 +175,23 @@ body {
 
 .playerBattle {
   display: flex;
-  margin-left: 2rem;
+  margin: .25rem 2rem;
   align-items: flex-start;
+}
+
+.playerBattle Button {
+  height: 170px;
+}
+
+.rollContainer {
+  position: absolute;
+  width: 100vw;
+  top: 45vh;
+  left: 0;
+  align-items: center;
+  text-align: center;
+  justify-content: space-around;
+  z-index: -1;
 }
 
 .selectDone {

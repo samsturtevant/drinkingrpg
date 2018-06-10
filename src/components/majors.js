@@ -4,6 +4,7 @@ export const MAJORS = [
         majorName: "Business",
         majorType: "Damage",
         idleSpritePath: require("../Assets/business-idle.png"),
+        damagedSpritePath: require("../Assets/business-damaged.png"),
         hp: 40,
         attack: 7,
         defense: 4,
@@ -42,7 +43,7 @@ export const MAJORS = [
         },
         move2: {
             moveName: "Charge",
-            moveTip: "Roll a d4, giving your next electric attack a 25% chance to stun its target(s)."
+            moveTip: "Roll a d4. If even, your next electric attack will stun its target(s)."
         },
         move3: {
             moveName: "Circuit",
@@ -69,7 +70,7 @@ export const MAJORS = [
         },
         move2: {
             moveName: "Hack",
-            moveTip: "Roll a d6 to switch the enemy's attack and defense."
+            moveTip: "Roll a d6. If even, switch the enemy's attack and defense."
         },
         move3: {
             moveName: "Debug",
@@ -84,7 +85,7 @@ export const MAJORS = [
         majorIndex: 3,
         majorName: "Philosophy",
         majorType: "Damage",
-        idleSpritePath: require("../Assets/ce-idle.png"),
+        idleSpritePath: require("../Assets/philosophy-idle.png"),
         hp: 40,
         attack: 7,
         defense: 5,
@@ -96,7 +97,7 @@ export const MAJORS = [
         },
         move2: {
             moveName: "Contemplation",
-            moveTip: "Roll a d4 to boost attack and defense by 1. If the roll is a 1, self-inflict 1 damage instead."
+            moveTip: "Roll a d4 to boost attack and defense. If the roll is a 1, self-inflict 1 damage instead."
         },
         move3: {
             moveName: "Straw Man",
