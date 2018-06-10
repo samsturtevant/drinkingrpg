@@ -32,6 +32,7 @@ export const MAJORS = [
         majorName: "Electrical Eng.",
         majorType: "Damage",
         idleSpritePath: require("../Assets/ee-idle.png"),
+        damagedSpritePath: require("../Assets/ee-damaged.png"),
         hp: 40,
         attack: 5,
         defense: 3,

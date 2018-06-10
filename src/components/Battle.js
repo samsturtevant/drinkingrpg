@@ -47,6 +47,10 @@ export default class Battle extends React.Component {
         })
     }
 
+    componentDidUpdate() {
+        ReactTooltip.rebuild();
+      }
+
     sortOrder() {
         // var newOrder = this.state.order;
         var newOrder = [];
@@ -247,6 +251,7 @@ export default class Battle extends React.Component {
     }
 
     distributeResults(results, target, player, r) {
+        this.setState
         let roll = r;
         var i = 0;
         var index = 0;
@@ -299,7 +304,7 @@ export default class Battle extends React.Component {
                 p[player].hp = hp
                 p[player].stun = 0
                 p[player].block = 0
-                this.setState({players: p})
+                this.setState({players: p, charge: false})
             }
         } else if (results.special === "contemplation") {
             if (roll == 1) {
@@ -352,6 +357,11 @@ export default class Battle extends React.Component {
             } else if (results.special === "execute") {
                 e[target].hp = 0;
                 this.setState({enemies: e})
+            } else if (results.special === "ubermensch") {
+                p[index].hp = p[index].hp + 10;
+                if (p[index].hp > MAJORS[[p[index].majorIndex]].hp) {
+                    p[index].hp = MAJORS[[p[index].majorIndex]].hp;
+                }
             }
         } else if (roll == 1) { // critical fail
             if (results.special === "overtime" || results.special === "execute") {
@@ -387,7 +397,8 @@ export default class Battle extends React.Component {
     render() {
         return (
             <div>
-                <div className="battle">
+                <ReactTooltip className="tip"/>
+                <div className="battle grass">
                     <div className="partyBattle">
 
                         <div className="playerBattle" style={{marginLeft: "14rem"}}>
@@ -406,18 +417,18 @@ export default class Battle extends React.Component {
                             "inactiveTarget ") + (this.state.currentUnit && this.state.players[0].majorName === this.state.currentUnit.majorName ? "activeMove" : null)}
                             onClick={() => this.state.showTargets === this.state.players[0] || this.state.showTargets === "ally" && this.state.currentUnit != this.state.players[0] || this.state.showTargets === "all" ? this.chooseTarget(-1, 0) : false }>
                                 {this.state.damaged == 0 ? 
-                                <img src={MAJORS[this.props.players[0]].damagedSpritePath} height={160} width={120} /> :
+                                <img src={MAJORS[this.props.players[0]].damagedSpritePath} height={120} width={90} /> :
                                 <AnimatedSpriteSheet
                                     filename={MAJORS[this.props.players[0]].idleSpritePath}
                                     initialFrame={0}
-                                    frame={{width: 120, height: 160}}
+                                    frame={{width: 90, height: 120}}
                                     bounds={{x: 0, y: 0, width: 5040, height: 160}}
                                     speed={200}
                                 />}
                             </button>
                             {this.state.strawman && this.state.players[0].majorName === "Philosophy" ? <div>
-                                <h4>Strawman ({this.state.strawman})</h4>
-                                <img height={83} src={require("../Assets/strawman.png")}/>
+                                <h4 style={{margin:0}}>Strawman ({this.state.strawman})</h4>
+                                <img height={92} src={require("../Assets/strawman.png")}/>
                             </div> : null}
                         </div>
 
@@ -437,18 +448,18 @@ export default class Battle extends React.Component {
                             "inactiveTarget ") + (this.state.currentUnit && this.state.players[1].majorName === this.state.currentUnit.majorName ? "activeMove" : null)}
                             onClick={() => this.state.showTargets === this.state.players[1] || this.state.showTargets === "ally" && this.state.currentUnit != this.state.players[1] || this.state.showTargets === "all" ? this.chooseTarget(-2, 1) : false }>
                                 {this.state.damaged == 1 ? 
-                                <img src={MAJORS[this.props.players[0]].damagedSpritePath} height={160} width={120} /> :
+                                <img src={MAJORS[this.props.players[1]].damagedSpritePath} height={120} width={90} /> :
                                 <AnimatedSpriteSheet
                                     filename={MAJORS[this.props.players[1]].idleSpritePath}
                                     initialFrame={0}
-                                    frame={{width: 120, height: 160}}
+                                    frame={{width: 90, height: 120}}
                                     bounds={{x: 0, y: 0, width: 5040, height: 160}}
                                     speed={200}
                                 />}
                             </button>
                             {this.state.strawman && this.state.players[1].majorName === "Philosophy" ? <div>
-                                <h4>Strawman ({this.state.strawman})</h4>
-                                <img height={83} src={require("../Assets/strawman.png")}/>
+                                <h4 style={{margin:0}}>Strawman ({this.state.strawman})</h4>
+                                <img height={92} src={require("../Assets/strawman.png")}/>
                             </div> : null}
                         </div>
 
@@ -468,18 +479,18 @@ export default class Battle extends React.Component {
                             "inactiveTarget ") + (this.state.currentUnit && this.state.players[2].majorName === this.state.currentUnit.majorName ? "activeMove" : null)}
                             onClick={() => this.state.showTargets === this.state.players[2] || this.state.showTargets === "ally" && this.state.currentUnit != this.state.players[2] || this.state.showTargets === "all" ? this.chooseTarget(-3, 2) : false }>
                                 {this.state.damaged == 2 ? 
-                                <img src={MAJORS[this.props.players[0]].damagedSpritePath} height={160} width={120} /> :
+                                <img src={MAJORS[this.props.players[2]].damagedSpritePath} height={120} width={90} /> :
                                 <AnimatedSpriteSheet
                                     filename={MAJORS[this.props.players[2]].idleSpritePath}
                                     initialFrame={0}
-                                    frame={{width: 120, height: 160}}
+                                    frame={{width: 90, height: 120}}
                                     bounds={{x: 0, y: 0, width: 5040, height: 160}}
                                     speed={200}
                                 />}
                             </button>
                             {this.state.strawman && this.state.players[2].majorName === "Philosophy" ? <div>
-                                <h4>Strawman ({this.state.strawman})</h4>
-                                <img height={83} src={require("../Assets/strawman.png")}/>
+                                <h4 style={{margin:0}}>Strawman ({this.state.strawman})</h4>
+                                <img height={92} src={require("../Assets/strawman.png")}/>
                             </div> : null}
                         </div>
 
@@ -499,18 +510,18 @@ export default class Battle extends React.Component {
                             "inactiveTarget ") + (this.state.currentUnit && this.state.players[3].majorName === this.state.currentUnit.majorName ? "activeMove" : null)}
                             onClick={() => this.state.showTargets === this.state.players[3] || this.state.showTargets === "ally" && this.state.currentUnit != this.state.players[3] || this.state.showTargets === "all" ? this.chooseTarget(-4, 3) : false }>
                                 {this.state.damaged == 3 ? 
-                                <img src={MAJORS[this.props.players[0]].damagedSpritePath} height={160} width={120} /> :
+                                <img src={MAJORS[this.props.players[3]].damagedSpritePath} height={120} width={90} /> :
                                 <AnimatedSpriteSheet
                                     filename={MAJORS[this.props.players[3]].idleSpritePath}
                                     initialFrame={0}
-                                    frame={{width: 120, height: 160}}
+                                    frame={{width: 90, height: 120}}
                                     bounds={{x: 0, y: 0, width: 5040, height: 160}}
                                     speed={200}
                                 />}
                             </button>
                             {this.state.strawman && this.state.players[3].majorName === "Philosophy" ? <div>
-                                <h4>Strawman ({this.state.strawman})</h4>
-                                <img height={83} src={require("../Assets/strawman.png")}/>
+                                <h4 style={{margin:0}}>Strawman ({this.state.strawman})</h4>
+                                <img height={92} src={require("../Assets/strawman.png")}/>
                             </div> : null}
                         </div>
 
@@ -552,12 +563,12 @@ export default class Battle extends React.Component {
                     {this.state.showMoves ? 
                     <div style={{left: this.state.moveLeft, top: this.state.moveTop}} className="flex moveButtonContainer">
                         <div className="moveRow">
-                            {this.state.currentUnit && this.state.showMoves ? <button className="moveButton" onClick={this.showTargets.bind(this, 0)}>{this.state.currentUnit.move1.moveName}</button> : null}
-                            {this.state.currentUnit && this.state.showMoves ? <button className="moveButton" onClick={this.showTargets.bind(this, 1)}>{this.state.currentUnit.move2.moveName}</button> : null}
+                            {this.state.currentUnit && this.state.showMoves ? <button data-tip={this.state.currentUnit.move1.moveTip} className="moveButton" onClick={this.showTargets.bind(this, 0)}><h4>{this.state.currentUnit.move1.moveName}</h4></button> : null}
+                            {this.state.currentUnit && this.state.showMoves ? <button data-tip={this.state.currentUnit.move2.moveTip} className="moveButton" onClick={this.showTargets.bind(this, 1)}><h4>{this.state.currentUnit.move2.moveName}</h4></button> : null}
                         </div>
                         <div className="moveRow">
-                            {this.state.currentUnit && this.state.showMoves ? <button className="moveButton" onClick={this.showTargets.bind(this, 2)}>{this.state.currentUnit.move3.moveName}</button> : null}
-                            {this.state.currentUnit && this.state.showMoves ? <button className="moveButton" onClick={this.showTargets.bind(this, 3)}>{this.state.currentUnit.move4.moveName}</button> : null}
+                            {this.state.currentUnit && this.state.showMoves ? <button data-tip={this.state.currentUnit.move3.moveTip} className="moveButton" onClick={this.showTargets.bind(this, 2)}><h4>{this.state.currentUnit.move3.moveName}</h4></button> : null}
+                            {this.state.currentUnit && this.state.showMoves ? <button data-tip={this.state.currentUnit.move4.moveTip} className="moveButton" onClick={this.showTargets.bind(this, 3)}><h4>{this.state.currentUnit.move4.moveName}</h4></button> : null}
                         </div>
                     </div>
                     : null}

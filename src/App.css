@@ -20,7 +20,7 @@ body {
 }
 
 .activeMove {
-  box-shadow: 0px 3px gray;
+  box-shadow: 0px 3px #FFF;
 }
 
 .activeTarget {
@@ -43,7 +43,8 @@ body {
 .battle {
   display: flex;
   justify-content: space-between;
-  margin-top: 1rem;
+  padding-top: 20vh;
+  height: 80vh;
 }
 
 .card {
@@ -76,6 +77,13 @@ body {
 .flex {
   display: flex;
   justify-content: space-evenly;
+}
+
+.grass {
+  background-image: url("./Assets/forest.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .majorSelectContainer {
@@ -121,15 +129,16 @@ body {
 .moveButton {
   height: 40px;
   width: 120px;
-  margin: .25rem;
+  margin: .25rem .25rem 0 0;
   color: #000;
   background-color: #FFF;
   border: none;
   border-radius: 3px;
+  cursor: pointer;
 }
 
 .moveButton:focus {
-  outline: blue solid;
+  outline: #222 solid;
 }
 
 .moveButtonContainer {
@@ -140,6 +149,12 @@ body {
 
 .moveRow {
   display: flex;
+}
+
+.moveRow Button h4 {
+  color: #000;
+  margin: 0;
+  cursor: pointer;
 }
 
 .moveSet {
@@ -180,7 +195,7 @@ body {
 }
 
 .playerBattle Button {
-  height: 170px;
+  height: 130px;
 }
 
 .rollContainer {
@@ -191,7 +206,7 @@ body {
   align-items: center;
   text-align: center;
   justify-content: space-around;
-  z-index: -1;
+  z-index: 1;
 }
 
 .selectDone {

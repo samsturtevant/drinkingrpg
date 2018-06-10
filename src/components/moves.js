@@ -103,7 +103,7 @@ export const MOVES = [
         }
     },
     { // philosophy
-        targets: ["enemy", "self", "target", "enemy"],
+        targets: ["enemy", "self", "self", "enemy"],
         move1: function() { // ad hominem
             return {
                 roll: 6,
@@ -126,7 +126,7 @@ export const MOVES = [
             return {
                 roll: 20,
                 singleDamage: 1,
-                special: "execute"
+                special: "ubermensch"
             }
         }
     }
